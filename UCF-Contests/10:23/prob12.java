@@ -1,3 +1,6 @@
+
+
+
 // All pairs shortest path
 
 import java.util.*;
@@ -5,6 +8,43 @@ import java.lang.*;
 import java.util.regex.Pattern;
 
 public class prob12{
+
+	List<List<String>> fun(List<String> words){
+
+		Set<ArrayList<String>> hm = new HashSet<ArrayList<String>>();
+
+		for(String word : words){
+			int[] freq = new int[26];
+			for(char c : word.toCharArray()){
+				c -= 'a';
+				freq[c]++;
+			}
+
+			StringBuilder sb = new StringBuilder();
+			for(int val : freq){
+				sb.append(val);
+				sb.append("/");
+			}
+
+			String key = sb.toString();
+			if(!hm.contains(key)){
+				ArrayList<String> al = new ArryaList<String>();
+				al.add(word);
+				hm.add(key, al);
+			} else {
+				hm.get(key).add(word);
+			}
+		}
+
+		List<List<String>> ret = new ArrayList<ArrayList<String>>();
+		hm.forEach((al) -> {
+			ret.add(al);
+		});
+
+		return ret;
+
+	}
+
 
 	static int disMatrix[][];
 	static final boolean DEBUG = false;
