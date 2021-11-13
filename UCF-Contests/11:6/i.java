@@ -17,13 +17,23 @@ public class i {
 		for(int i = 1; i < depth; i++){
 			ArrayList<Integer> prevLayer = curLayer;
 			curLayer = new ArrayList<Integer>();
+
 			curLayer.add(1);
 			for(int j = 1; j < i; j++){
 				curLayer.add(prevLayer.get(j-1) + prevLayer.get(j));
 			}
+			curLayer.add(1);
 		}
 		int sum = 0;
 		curLayer.forEach((k) -> {sum += k});
+
+		if(sum > target) {
+			System.out.println("impossible");
+			return;
+		}
+
+
+
 	}
 
 }

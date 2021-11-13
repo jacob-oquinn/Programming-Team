@@ -3,8 +3,8 @@ import java.lang.*;
 
 
 public class e{
-	// sort weights Array
-	// take the largest buckets available and the smallest if possible
+	// track our path up the tree
+	// calculate our ending position by traversing back down the tree
 	public static void main(String[] args){
 		Scanner scnr = new Scanner(System.in);
 		int numCases = scnr.nextInt();
