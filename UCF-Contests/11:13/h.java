@@ -8,11 +8,11 @@ public class h{
 		Scanner scnr = new Scanner(System.in);
 
 		// assume all numbers are prime until disproven
-		boolean[] primes = new boolean[(int)1e7];
+		boolean[] primes = new boolean[10000009];
 		Arrays.fill(primes, true);
 		primes[1] = false;
 
-		for(int i = 2; i*i < primes.length; i++){
+		for(int i = 2; i < primes.length; i++){
 			if(!primes[i]) continue;
 			for(int k = 2*i; k < primes.length; k+=i){
 				primes[k] = false;
@@ -22,18 +22,19 @@ public class h{
 		int numCases = scnr.nextInt();
 
 
-		// points of error float -> int (rounding)
+		// points of error double -> int (rounding)
 		// dividing ints
 		while(numCases-->0){
-			float num1 = scnr.nextFloat();
-			float num2 = scnr.nextFloat();
+			double num1 = scnr.nextDouble();
+			double num2 = scnr.nextDouble();
 			// get rid of decimal
-			num1*=1000000;
-			num2*=1000000;
+			num1*=100000;
+			num2*=100000;
 
 			// round results
-			int n1 = Math.round(num1);
-			int n2 = Math.round(num2);
+			// System.out.println("num1 = " + num1 + ", num2 = " + num2);
+			int n1 = (int)Math.round(num1);
+			int n2 = (int)Math.round(num2);
 			int gcd = GCD(n1, n2);
 			//System.out.println("GCD = " + gcd);
 			n1 /= gcd;
