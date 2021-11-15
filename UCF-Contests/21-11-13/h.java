@@ -8,8 +8,9 @@ public class h{
 		Scanner scnr = new Scanner(System.in);
 
 		// assume all numbers are prime until disproven
-		boolean[] primes = new boolean[10000009];
+		boolean[] primes = new boolean[10000001];
 		Arrays.fill(primes, true);
+		primes[0] = false;
 		primes[1] = false;
 
 		for(int i = 2; i < primes.length; i++){
@@ -25,23 +26,25 @@ public class h{
 		// points of error double -> int (rounding)
 		// dividing ints
 		while(numCases-->0){
-			double num1 = scnr.nextDouble();
-			double num2 = scnr.nextDouble();
+			String num1 = scnr.next();
+			String num2 = scnr.next();
 			// get rid of decimal
-			num1*=100000;
-			num2*=100000;
+			num1 = num1.replace(".","");
+			num2 = num2.replace(".","");
 
 			// round results
 			// System.out.println("num1 = " + num1 + ", num2 = " + num2);
-			int n1 = (int)Math.round(num1);
-			int n2 = (int)Math.round(num2);
+			int n1 = Integer.parseInt(num1);
+			int n2 = Integer.parseInt(num2);
 			int gcd = GCD(n1, n2);
-			//System.out.println("GCD = " + gcd);
+			// System.out.println("GCD = " + gcd);
 			n1 /= gcd;
 			n2 /= gcd;
-			//System.out.println(n1 + " " + n2);
+			// System.out.println(n1 + " " + n2);
 
-			if(primes[n1] && primes[n2])
+			if(n1 == 1 && n2 == 1)
+				System.out.println(2 + " " + 2);
+			else if(primes[n1] && primes[n2])
 				System.out.println(n1 + " " + n2);
 			else
 				System.out.println("impossible");
@@ -49,10 +52,6 @@ public class h{
 	}
 
 	static int GCD(int a, int b){
-		int aa = Math.max(a,b);
-		int bb = Math.min(a,b);
-		if(bb == 0) return aa;
-		//System.out.println("a = " + aa + " b = " + bb);
-		return GCD(bb, aa % bb);
+		return (b == 0) ? a : GCD(b, a % b);
 	}
 }
