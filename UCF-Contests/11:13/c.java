@@ -48,8 +48,8 @@ public class c{
 			for(int i = 0; i < numNodes; i++){
 				getOrder(i);
 			}
-			for(int k : order) System.out.print(k + " ");
-			System.out.println();
+			// for(int k : order) System.out.print(k + " ");
+			// System.out.println();
 			System.out.println(caseNum + " " + getOrder(numNodes-1));
 		}
 
@@ -64,13 +64,13 @@ public class c{
 		int highestOrder = -1;
 		for(Edge e : edges){
 			if(e.v == cur){
-				highestOrder = Math.max(highestOrder, getOrder(e.u));
 				if(!srcVisited[e.u]) freq[getOrder(e.u)]++;
 				srcVisited[e.u] = true;
 			}
 		}
 		// check if 2+ incoming edges of had equal order
 		for(int i = 0; i < freq.length; i++){
+			if(freq[i] == 1) highestOrder = Math.max(highestOrder, i  );
 			if(freq[i] >= 2) highestOrder = Math.max(highestOrder, i+1);
 		}
 
