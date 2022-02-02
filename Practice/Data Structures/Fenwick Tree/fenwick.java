@@ -9,7 +9,7 @@ class fenwick {
 
 	public static void main(String[] args){
 
-		int [] arr = {1,2,3,4,5,6,7};
+		int [] arr = {1,2,3,4s,5,6,7};
 
 		fenwick bitree = new fenwick();
 		bitree.initialize(arr);
@@ -41,11 +41,4 @@ class fenwick {
 		for(index += 1; index < n; index += Integer.lowestOneBit(index))
 			tree[index] += val;
 	}
-
-
-
-
-
-
-
 }
